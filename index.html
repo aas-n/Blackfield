@@ -1,9 +1,16 @@
 ---
-layout: default
+layout: null
+permalink: /
+sitemap: false
 ---
-<p class="lede">{{ site.tagline }}</p>
-<ul class="postlist">
-{% for post in site.posts %}
-  <li><span class="date">{{ post.date | date: "%Y-%m-%d" }}</span> <a href="{{ post.url | relative_url }}">{{ post.title }}</a>{% if post.tags %} <span class="tags">{% for t in post.tags %}#{{ t }} {% endfor %}</span>{% endif %}</li>
-{% endfor %}
-</ul>
+<!doctype html>
+<html lang="{{ site.lang }}">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="refresh" content="0; url={{ '/blog/' | relative_url }}">
+<link rel="canonical" href="{{ '/blog/' | absolute_url }}">
+<meta name="robots" content="noindex">
+<title>{{ site.title }}</title>
+</head>
+<body>Redirecting to <a href="{{ '/blog/' | relative_url }}">/blog/</a>.</body>
+</html>

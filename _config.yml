@@ -4,12 +4,12 @@ tagline: "notes: AD, relaying, windows internals"
 description: "notes on active directory, authentication relaying and windows internals"
 
 # SEO: set url to your real domain before publishing (used for canonical, Open Graph, sitemap, feed)
-url: "https://CHANGE-ME.github.io"
+url: "https://blackfield.ch"
 author: "Lyderic Lefebvre"
 lang: en
 image: "/assets/img/avatar.jpg"
 
-permalink: /posts/:title/
+permalink: /blog/:title/
 markdown: kramdown
 kramdown:
   input: GFM
