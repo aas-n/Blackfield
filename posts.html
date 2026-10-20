@@ -1,0 +1,9 @@
+---
+layout: default
+title: posts
+permalink: /posts/
+---
+{% assign lastyear = "" %}
+{% for post in site.posts %}{% assign y = post.date | date: "%Y" %}{% if y != lastyear %}{% unless forloop.first %}</ul>{% endunless %}<h2>{{ y }}</h2><ul class="postlist">{% assign lastyear = y %}{% endif %}
+  <li><span class="date">{{ post.date | date: "%Y-%m-%d" }}</span> <a href="{{ post.url | relative_url }}">{{ post.title }}</a>{% if post.tags %} <span class="tags">{% for t in post.tags %}#{{ t }} {% endfor %}</span>{% endif %}</li>
+{% if forloop.last %}</ul>{% endif %}{% endfor %}

@@ -1,0 +1,26 @@
+title: whoami
+handle: aasni
+tagline: "notes: AD, relaying, windows internals"
+description: "notes on active directory, authentication relaying and windows internals"
+
+# SEO: set url to your real domain before publishing (used for canonical, Open Graph, sitemap, feed)
+url: "https://CHANGE-ME.github.io"
+author: "Lyderic Lefebvre"
+lang: en
+image: "/assets/img/avatar.jpg"
+
+permalink: /posts/:title/
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# set your real profiles here (leave blank to hide the icon)
+social:
+  linkedin: "https://www.linkedin.com/in/lydericlefebvre/"
+  twitter: "https://twitter.com/aas_s3curity"
+
+exclude:
+  - README.md
+  - Dockerfile
+  - vendor

@@ -1,0 +1,9 @@
+---
+layout: default
+---
+<article class="post">
+  <h1>{{ page.title }}</h1>
+  <p class="meta">{{ page.date | date: "%Y-%m-%d" }}{% if page.tags %} . {% for t in page.tags %}#{{ t }} {% endfor %}{% endif %}</p>
+  {{ content }}
+  <p class="back"><a href="{{ '/posts/' | relative_url }}">&lt;- back to posts</a></p>
+</article>
