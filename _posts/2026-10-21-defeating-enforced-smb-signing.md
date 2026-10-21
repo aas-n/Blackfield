@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Defeating enforced SMB signing: a note"
-date: 2026-10-19
+date: 2026-10-21
 tags: [smb, relay, ntlm, kerberos, cve-2025-33073, cve-2025-58726, cve-2026-26128, cve-2026-24294]
 description: "A documented SMB2/3 re-authentication behavior that keeps a reflected authentication working against a signing-required target."
 ---
