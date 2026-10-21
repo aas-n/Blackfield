@@ -72,12 +72,12 @@ ul.postlist a:hover{color:var(--accent)}
 ul.postlist .tags{color:var(--muted); font-family:var(--mono); font-size:.85rem}
 
 /* headings: bright, red section rule */
-h1{font-family:var(--sans); color:var(--strong); font-size:2.2rem; font-weight:800; line-height:1.18; margin:.3rem 0 .7rem; letter-spacing:-.02em}
+h1{font-family:var(--sans); color:var(--strong); font-size:1.95rem; font-weight:800; line-height:1.18; margin:.3rem 0 .7rem; letter-spacing:-.02em}
 .meta{font-family:var(--mono); color:var(--muted); font-size:.9rem; margin:0 0 2.2rem}
 
-article.post{font-size:1.14rem; line-height:1.8}
-article.post h2{font-family:var(--sans); color:var(--head); font-size:1.6rem; font-weight:700; line-height:1.25; margin:3rem 0 .9rem; padding-bottom:.35rem; border-bottom:2px solid var(--accent)}
-article.post h3{font-family:var(--sans); color:var(--head); font-size:1.28rem; font-weight:700; margin:2.1rem 0 .6rem}
+article.post{font-size:1rem; line-height:1.7}
+article.post h2{font-family:var(--sans); color:var(--head); font-size:1.42rem; font-weight:700; line-height:1.25; margin:2.6rem 0 .8rem; padding-bottom:.35rem; border-bottom:2px solid var(--accent)}
+article.post h3{font-family:var(--sans); color:var(--head); font-size:1.16rem; font-weight:700; margin:1.9rem 0 .55rem}
 article.post h3::before{content:"# "; color:var(--accent); font-family:var(--mono)}
 article.post p{margin:0 0 1.3rem}
 article.post ul, article.post ol{margin:0 0 1.3rem; padding-left:1.5rem}
