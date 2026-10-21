@@ -31,7 +31,7 @@ The recent public work reaches the same wall and stops there, for SMB:
 - [SySS](https://blog.syss.com/posts/kerberos-reflection/) lists "server-side SMB signing must not be
   enforced" as a precondition for their SMB reflection.
 - [SpecterOps](https://specterops.io/blog/2025/04/08/the-renaissance-of-ntlm-relay-attacks-everything-you-need-to-know/)'
-  relay survey presents enforced signing (with channel binding) as the right way to mitigate relay.
+  relay survey presents enforced SMB signing as the right way to mitigate relay.
 
 Everything below stands on that work.
 
