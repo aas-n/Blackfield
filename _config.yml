@@ -6,7 +6,7 @@ description: "notes on active directory, authentication relaying and windows int
 url: "https://blackfield.ch"
 author: "Lyderic Lefebvre"
 lang: en
-image: "/assets/img/avatar.jpg"
+image: "/assets/img/og-default.jpg"
 
 permalink: /blog/:title/
 markdown: kramdown
