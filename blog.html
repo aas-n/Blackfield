@@ -3,7 +3,6 @@ layout: default
 title: blog
 permalink: /blog/
 ---
-<p class="lede">{{ site.tagline }}</p>
 <ul class="postlist">
 {% for post in site.posts %}
   <li><span class="date">{{ post.date | date: "%Y-%m-%d" }}</span> <a href="{{ post.url | relative_url }}">{{ post.title }}</a>{% if post.tags %} <span class="tags">{% for t in post.tags %}#{{ t }} {% endfor %}</span>{% endif %}</li>

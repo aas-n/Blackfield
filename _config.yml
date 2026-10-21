@@ -1,6 +1,5 @@
 title: whoami
 handle: aasni
-tagline: "notes: AD, relaying, windows internals"
 description: "notes on active directory, authentication relaying and windows internals"
 
 # SEO: set url to your real domain before publishing (used for canonical, Open Graph, sitemap, feed)
