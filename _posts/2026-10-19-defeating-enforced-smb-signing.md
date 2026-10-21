@@ -187,7 +187,7 @@ $ bloodyAD -u user1 -p Passw0rd1 -d ad.local --host dc01.ad.local remove dnsReco
 [-] record removed successfully
 ```
 
-Repository: [https://github.com/aas-n/reauthx](https://github.com/aas-n/reauthx){:target="_blank" rel="noopener"} (not public yet at the time of writing).
+Repository: [github.com/aas-n/reauthx](https://github.com/aas-n/reauthx){:target="_blank" rel="noopener"}.
 
 ## Credits and references
 
