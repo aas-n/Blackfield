@@ -123,7 +123,6 @@ $ python3 patchcheck.py 'AD.LOCAL/user1:Passw0rd1@10.0.0.10' --probe 'user2:Pass
 
     #1  CVE-2025-33073         client reflection (CMTI)        patched
     #2  CVE-2025-58726         loopback source-IP (GhostSPN)   absent
-    #3  CVE-2026-24294/26128   loopback signing (Mar 2026)     absent
     #4  same-user re-auth      (Sep 2026, feature flag)        absent
 
 [+] RCE   33073 patched, 58726 absent
