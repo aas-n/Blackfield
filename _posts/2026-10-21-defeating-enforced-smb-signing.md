@@ -201,8 +201,8 @@ next to the researchers who actually move this field. Thanks in particular to:
 - Dirk-jan Mollema, for krbrelayx, which this forks.
 - Synacktiv (yaumn), for the modern authentication reflection analysis.
 - SySS, Semperis, and SpecterOps, for the research this note leans on.
-- ThatTotallyRealMyth, for the spec reading that sharpened how key retention and the missing identity check should be told apart.
-- NeffIsBack (NetExec), for the feedback and for welcoming the detection module upstream.
+- ThatTotallyRealMyth, for sharpening the spec reading.
+- NeffIsBack (NetExec), for the feedback on the detection module.
 
 References:
 
