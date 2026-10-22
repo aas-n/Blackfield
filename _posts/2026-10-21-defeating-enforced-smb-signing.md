@@ -38,11 +38,15 @@ Everything below stands on that work.
 ## The SMB signing angle
 
 SMB lets a client re-authenticate an existing session. When it does, the server keeps the original
-signing key (it does not create a new one), and it does not re-check that the new identity matches the
-old one. This is documented behavior, not a flaw I found - Microsoft's own SMB specification spells it
-out: "the existing Session.SessionKey will be retained" ([MS-SMB2, section 3.3.5.5.2](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-smb2/5ecc02fb-0e60-4cba-afeb-f13100a6e65e)),
+signing key rather than deriving a new one: the specification says "the existing Session.SessionKey
+will be retained" ([MS-SMB2, section 3.3.5.5.2](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-smb2/5ecc02fb-0e60-4cba-afeb-f13100a6e65e)),
 and the server only regenerates the signing key when the request "is not for session reauthentication"
-([MS-SMB2, section 3.3.5.5.3](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-smb2/5ed93f06-a1d2-4837-8954-fa8b833c2654), step 7), so on re-authentication the original key is kept.
+([MS-SMB2, section 3.3.5.5.3](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-smb2/5ed93f06-a1d2-4837-8954-fa8b833c2654), step 7). So on re-authentication the original key is kept, and that part is documented.
+
+What the specification describes here is a principal re-authenticating its own session (for example
+after it expires), not a different identity being swapped onto an existing session's key. The server
+simply does not re-check that the re-authenticating identity matches the original one, and that missing
+check, rather than the key retention itself, is what makes the swap possible.
 
 So the idea is simple: open an SMB session as a low-privilege account you control (so you can sign it),
 then re-authenticate that same session with the relayed authentication of a privileged
