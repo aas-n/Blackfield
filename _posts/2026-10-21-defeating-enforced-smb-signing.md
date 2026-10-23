@@ -95,7 +95,7 @@ Two small things, for authorized testing only:
 - [reauthx](https://github.com/aas-n/reauthx){:target="_blank" rel="noopener"}: a small fork of krbrelayx that adds one opt-in flag,
   `--reauth-bypass`. With the flag off, it behaves exactly like krbrelayx. It also ships `patchcheck.py`
   (recon) and `coerce_name.py` (coercion-name helper).
-- A NetExec module, `reauth_swap`, that checks whether a host still allows the cross-user
+- [reauth_swap](https://github.com/aas-n/NetExec/blob/feat/reauth-swap-module/nxc/modules/reauth_swap.py){:target="_blank" rel="noopener"}, a NetExec module that checks whether a host still allows the cross-user
   re-authentication swap.
 
 What follows is an example. Two low-privilege
@@ -199,11 +199,11 @@ Repository: [github.com/aas-n/reauthx](https://github.com/aas-n/reauthx){:target
 I am not the person who did the hard work here. I connected dots that others drew, and I am small
 next to the researchers who actually move this field. Thanks in particular to:
 
-- Dirk-jan Mollema, for krbrelayx, which this forks.
+- [Dirk-jan Mollema](https://x.com/_dirkjan), for krbrelayx, which this forks.
 - Synacktiv, for the modern authentication reflection analysis.
-- SySS, Semperis, and SpecterOps, for the research this note leans on.
+- SySS, Semperis, for the research this note leans on.
 - [Raj Patel](https://x.com/grayhatkiller) (SpecterOps), for the LDAP Switcheroo, the same idea carried to LDAP signing.
-- NeffIsBack and ThatTotallyRealMyth, for the spec reading that sharpened how key retention and the missing identity check should be told apart.
+- [NeffIsBack](https://x.com/al3x_n3ff) and [ThatTotallyRealMyth](https://x.com/abdo_mhanni), for the spec reading that sharpened how key retention and the missing identity check should be told apart.
 
 References:
 
