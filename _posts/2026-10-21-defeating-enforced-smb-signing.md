@@ -73,6 +73,10 @@ Limits, so this is not over-read:
   already defines for binding). Enforced SMB signing stays necessary; it is just not sufficient on its
   own against this.
 
+> **Update, 2026-10-23.** SpecterOps published Raj Patel's "LDAP Switcheroo," the same
+> re-authentication idea against LDAP signing on domain controllers. It covers both SMB and LDAP,
+> where this note only looks at SMB. Good read, and a sign this is a class rather than a single bug.
+
 ## A note on patching
 
 This looks like it is being fixed. A same-user check on re-authentication shows up on
@@ -210,5 +214,6 @@ References:
 - [SySS, Kerberos relaying/reflection over SMB](https://blog.syss.com/posts/kerberos-reflection/)
 - [Semperis, Ghost SPNs and Kerberos reflection (CVE-2025-58726)](https://www.semperis.com/blog/exploiting-ghost-spns-and-kerberos-reflection-for-smb-server-privilege-elevation/)
 - [SpecterOps, The Renaissance of NTLM Relay Attacks](https://specterops.io/blog/2025/04/08/the-renaissance-of-ntlm-relay-attacks-everything-you-need-to-know/)
+- [SpecterOps (Raj Patel), Signed, Sealed, and Relayed, NTLM-style (same re-authentication idea against SMB and LDAP signing)](https://specterops.io/blog/2026/10/23/ldap-signing-bypass-ntlm-relay/)
 - [CrowdStrike, CVE-2025-54918 analysis (flag-stripping, a different technique)](https://www.crowdstrike.com/en-us/blog/analyzing-ntlm-ldap-authentication-bypass-vulnerability/)
 - [Microsoft, KB5124008 (8 September 2026 security update; first build carrying the same-user check)](https://support.microsoft.com/help/5124008)
