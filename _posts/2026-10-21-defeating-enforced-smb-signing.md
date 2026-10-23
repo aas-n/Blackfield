@@ -23,17 +23,14 @@ Enforced SMB signing is the usual way to stop relay to SMB, whatever the authent
 the session key, the attacker cannot sign the traffic, so a signing-required target refuses the session.
 [Domain Controllers require SMB signing by default](https://learn.microsoft.com/en-us/windows-server/storage/file-server/smb-signing-overview).
 
-The recent public work reaches the same wall and stops there, for SMB:
+Microsoft is explicit about what signing buys you:
 
-- [Synacktiv](https://www.synacktiv.com/en/publications/bypassing-windows-authentication-reflection-mitigations-for-system-shells-part)'s
-  follow-up on the CVE-2025-33073 mitigations states that once loopback signing is enforced, reflection
-  attacks against the SMB service "seem definitely fixed", and the research pivots to HTTP.
-- [SySS](https://blog.syss.com/posts/kerberos-reflection/) lists "server-side SMB signing must not be
-  enforced" as a precondition for their SMB reflection.
-- [SpecterOps](https://specterops.io/blog/2025/04/08/the-renaissance-of-ntlm-relay-attacks-everything-you-need-to-know/)'
-  relay survey presents enforced SMB signing as the right way to mitigate relay.
+> The signature also confirms the sender's and receiver's identities, and prevents relay attacks.
+>
+> [Microsoft, Overview of SMB signing](https://learn.microsoft.com/en-us/windows-server/storage/file-server/smb-signing-overview)
 
-Everything below stands on that work.
+So the wall is clear: enforce signing and relay to SMB is supposed to be dead. Everything below is about
+getting past it.
 
 ## The SMB signing angle
 
