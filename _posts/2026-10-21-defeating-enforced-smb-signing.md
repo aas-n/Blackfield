@@ -92,7 +92,7 @@ trackers; it reads as silent hardening rather than a tracked fix. Corrections we
 
 Two small things, for authorized testing only:
 
-- [reauthx](https://github.com/aas-n/reauthx){:target="_blank" rel="noopener"}: a small fork of krbrelayx that adds one opt-in flag,
+- [reauthx](https://github.com/aas-n/reauthx){:target="_blank" rel="noopener"}, a small fork of krbrelayx that adds one opt-in flag,
   `--reauth-bypass`. With the flag off, it behaves exactly like krbrelayx. It also ships `patchcheck.py`
   (recon) and `coerce_name.py` (coercion-name helper).
 - [reauth_swap](https://github.com/aas-n/NetExec/blob/feat/reauth-swap-module/nxc/modules/reauth_swap.py){:target="_blank" rel="noopener"}, a NetExec module that checks whether a host still allows the cross-user
