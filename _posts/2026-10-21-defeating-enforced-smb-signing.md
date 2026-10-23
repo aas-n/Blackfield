@@ -29,8 +29,8 @@ Microsoft is explicit about what signing buys you:
 >
 > [Microsoft, Overview of SMB signing](https://learn.microsoft.com/en-us/windows-server/storage/file-server/smb-signing-overview)
 
-So the wall is clear: enforce signing and relay to SMB is supposed to be dead. Everything below is about
-getting past it.
+So the wall is clear: with signing enforced, relay to SMB is supposed to be dead. This note is about
+getting through it anyway.
 
 ## The SMB signing angle
 
