@@ -14,7 +14,7 @@ description: "A documented SMB2/3 re-authentication behavior that keeps a reflec
 
 ![the Padme "right?" meme](/assets/img/right.png)
 
-## Current state of the art (short)
+## The relay wall
 
 Relay: an attacker captures an authentication (NTLM or Kerberos) and forwards it to a service, acting as
 the victim. Reflection is the case where it is sent back to the machine it came from.
