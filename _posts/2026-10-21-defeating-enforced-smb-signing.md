@@ -196,7 +196,7 @@ I am not the person who did the hard work here. I connected dots that others dre
 next to the researchers who actually move this field. Thanks in particular to:
 
 - Dirk-jan Mollema, for krbrelayx, which this forks.
-- Synacktiv (yaumn), for the modern authentication reflection analysis.
+- Synacktiv, for the modern authentication reflection analysis.
 - SySS, Semperis, and SpecterOps, for the research this note leans on.
 - NeffIsBack and ThatTotallyRealMyth, for the spec reading that sharpened how key retention and the missing identity check should be told apart.
 
