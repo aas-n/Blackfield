@@ -16,8 +16,8 @@ description: "A documented SMB2/3 re-authentication behavior that keeps a reflec
 
 ## The relay wall
 
-Relay: an attacker captures an authentication (NTLM or Kerberos) and forwards it to a service, acting as
-the victim. Reflection is the case where it is sent back to the machine it came from.
+In a relay, an attacker captures an authentication (NTLM or Kerberos) and forwards it to a service,
+acting as the victim. Reflection is the case where it is sent back to the machine it came from.
 
 Enforced SMB signing is the usual way to stop relay to SMB, whatever the authentication protocol. Without
 the session key, the attacker cannot sign the traffic, so a signing-required target refuses the session.
