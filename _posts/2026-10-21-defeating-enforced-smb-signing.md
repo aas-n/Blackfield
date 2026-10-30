@@ -2,7 +2,7 @@
 layout: post
 title: "Defeating enforced SMB signing: a note"
 date: 2026-10-21
-tags: [smb, relay, ntlm, kerberos, cve-2025-33073, cve-2025-58726, cve-2026-26128, cve-2026-24294]
+tags: [smb, relay, ntlm, kerberos, cve-2026-69676, cve-2025-33073, cve-2025-58726, cve-2026-26128, cve-2026-24294]
 description: "A documented SMB2/3 re-authentication behavior that keeps a reflected authentication working against a signing-required target."
 ---
 
@@ -89,7 +89,7 @@ trackers; it reads as silent hardening rather than a tracked fix. Corrections we
 > **Update, 2026-10-23.** SpecterOps published Raj Patel's "LDAP Switcheroo" the same
 > re-authentication idea against LDAP signing on domain controllers. It covers both SMB and LDAP.
 
-> **Update, 2026-10-30.** MSRC confirms this issue was reported by [@mad31k](https://x.com/mad31k) as part of a RCE chain and fixed in `CVE-2026-6976`.
+> **Update, 2026-10-30.** MSRC confirms this issue was reported by [@mad31k](https://x.com/mad31k) as part of a RCE chain and fixed in `CVE-2026-69676`.
 
 ## Tools
 
