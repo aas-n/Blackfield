@@ -73,10 +73,6 @@ Limits, so this is not over-read:
   already defines for binding). Enforced SMB signing stays necessary; it is just not sufficient on its
   own against this.
 
-> **Update, 2026-10-23.** SpecterOps published Raj Patel's "LDAP Switcheroo," the same
-> re-authentication idea against LDAP signing on domain controllers. It covers both SMB and LDAP,
-> where this note only looks at SMB. Good read, and a sign this is a class rather than a single bug.
-
 ## A note on patching
 
 This looks like it is being fixed. A same-user check on re-authentication shows up on
@@ -87,6 +83,13 @@ receive it. So it is probably better read as a patch window than a permanent gap
 that is current on updates is likely no longer affected, while hosts behind that wave
 still are. I could not find a CVE for this specific change, in Microsoft's update guide, the KB notes, or public
 trackers; it reads as silent hardening rather than a tracked fix. Corrections welcome.
+
+> **Update, 2026-10-21.** This blog post is released.
+
+> **Update, 2026-10-23.** SpecterOps published Raj Patel's "LDAP Switcheroo" the same
+> re-authentication idea against LDAP signing on domain controllers. It covers both SMB and LDAP.
+
+> **Update, 2026-10-30.** MSRC confirms this issue was reported by [@mad31k](https://x.com/mad31k) as part of a RCE chain and fixed in `CVE-2026-6976`.
 
 ## Tools
 
@@ -199,11 +202,12 @@ Repository: [github.com/aas-n/reauthx](https://github.com/aas-n/reauthx){:target
 I am not the person who did the hard work here. I connected dots that others drew, and I am small
 next to the researchers who actually move this field. Thanks in particular to:
 
+- [mad31k](https://x.com/mad31k) for originally reporting this bug to MSRC.
+- [Raj Patel](https://x.com/grayhatkiller) (SpecterOps), for the LDAP Switcheroo, the same idea carried to LDAP signing.
+- [NeffIsBack](https://x.com/al3x_n3ff) and [ThatTotallyRealMyth](https://x.com/abdo_mhanni), for the spec reading that sharpened how key retention and the missing identity check should be told apart.
 - [Dirk-jan Mollema](https://x.com/_dirkjan), for krbrelayx, which this forks.
 - Synacktiv, for the modern authentication reflection analysis.
 - SySS, Semperis, for the research this note leans on.
-- [Raj Patel](https://x.com/grayhatkiller) (SpecterOps), for the LDAP Switcheroo, the same idea carried to LDAP signing.
-- [NeffIsBack](https://x.com/al3x_n3ff) and [ThatTotallyRealMyth](https://x.com/abdo_mhanni), for the spec reading that sharpened how key retention and the missing identity check should be told apart.
 
 References:
 
